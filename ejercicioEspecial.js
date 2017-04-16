@@ -28,7 +28,7 @@ function Queue() {
 
     //Como en la división no existe la conmutatividad se agregarán los números bajo el concepto de cola
     this.enqueue = function(element) {
-        this.numbers.push(element);
+        this.numbers.push(parseInt(element));
     };
 
     //Push de las operaciones bajo el concepto de cola FIFO
@@ -36,7 +36,9 @@ function Queue() {
         this.operations.push(element);
     };
 
-
+    this.dequeue = function() {
+        return this.operations.shift();
+    };
 }
 
 var ordenDeUsuario = new Queue();
@@ -46,8 +48,8 @@ var num1 = prompt('Ingrese el primer número');
 var num2 = prompt('Ingrese el segundo número');
 
 //Se agregan a la cola los números sobre los cuales se realizará la operación
-ordenDeUsuario.enqueue(ParseInt(num1));
-ordenDeUsuario.enqueue(ParseInt(num2));
+ordenDeUsuario.enqueue(num1);
+ordenDeUsuario.enqueue(num2);
 console.log(ordenDeUsuario.numbers);
 
 //Se agregan a la cola el orden de operaciones
@@ -60,4 +62,21 @@ while (contador < 4) {
 
 console.log(ordenDeUsuario.operations);
 
-//Sacar de la cola uno a uno y realizar las operaciones
+//El for recibe el orden de las operaciones
+var largo = ordenDeUsuario.operations.length
+for (var i = 0; i < largo; i++) {
+    //console.log(ordenDeUsuario.operations[i]);
+
+    //Quito el primer elemento de la cola
+    var operacion = ordenDeUsuario.dequeue();
+    if (operacion === 1) {
+        console.log('Suma :', ordenDeUsuario.add());
+    } else if (operacion === 2) {
+        console.log('Resta: ', ordenDeUsuario.sust());
+    } else if (operacion === 3) {
+        console.log('Multiplicación: ', ordenDeUsuario.mult());
+    } else if (operacion === 4) {
+        console.log('División: ', ordenDeUsuario.div());
+    }
+
+}
