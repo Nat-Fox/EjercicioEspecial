@@ -50,7 +50,7 @@ var num2 = prompt('Ingrese el segundo número');
 //Se agregan a la cola los números sobre los cuales se realizará la operación
 ordenDeUsuario.enqueue(num1);
 ordenDeUsuario.enqueue(num2);
-console.log(ordenDeUsuario.numbers);
+//console.log(ordenDeUsuario.numbers);
 
 //Se agregan a la cola el orden de operaciones
 var contador = 0;
@@ -65,7 +65,7 @@ while (contador < 4) {
     }
 }
 
-console.log(ordenDeUsuario.operations);
+//console.log(ordenDeUsuario.operations);
 
 //El for recibe el orden de las operaciones
 var largo = ordenDeUsuario.operations.length
@@ -75,12 +75,16 @@ for (var i = 0; i < largo; i++) {
     //Quito el primer elemento de la cola
     var operacion = ordenDeUsuario.dequeue();
     if (operacion === 1) {
+        document.write('Suma : ', ordenDeUsuario.add() + '<br>');
         console.log('Suma :', ordenDeUsuario.add());
     } else if (operacion === 2) {
+        document.write('Resta: ', ordenDeUsuario.sust() + '<br>');
         console.log('Resta: ', ordenDeUsuario.sust());
     } else if (operacion === 3) {
+        document.write('Multiplicación: ', ordenDeUsuario.mult() + '<br>');
         console.log('Multiplicación: ', ordenDeUsuario.mult());
     } else if (operacion === 4) {
+        document.write('División: ', ordenDeUsuario.div() + '<br>');
         console.log('División: ', ordenDeUsuario.div());
     }
 
