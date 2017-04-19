@@ -56,8 +56,13 @@ console.log(ordenDeUsuario.numbers);
 var contador = 0;
 while (contador < 4) {
     var operaciones = prompt('Agrega el orden en que quieres sea realizada la operación.\n1: Suma; 2: Resta; 3:Multiplicación; 4:División');
-    ordenDeUsuario.enqueueOp(parseInt(operaciones));
-    contador++;
+    //obligamos al usuario a ingresar una opción válida
+    if (operaciones != 1 && operaciones != 2 && operaciones != 3 && operaciones != 4) {
+        alert('Debes ingresar una opción válida');
+    } else {
+        ordenDeUsuario.enqueueOp(parseInt(operaciones));
+        contador++;
+    }
 }
 
 console.log(ordenDeUsuario.operations);
